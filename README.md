@@ -20,6 +20,15 @@ To run the sample with [Docker](https://www.docker.com/), make sure you have `do
 
 Rename the .env.example file to .env, change the environment variables, and register the URLs as explained [previously](#running-the-app).
 
+ .env file:
+```shell
+AUTH0_CLIENT_ID=moAz0GAGs2s28Lut47BgvKxhcjm0uSw4
+AUTH0_CLIENT_SECRET=Kp1dKav_SxBvU4GIUkRf4mPg77X9Y-txjPP1zANHcAKvqtSBg24Q5KJgV-m9NKJR
+AUTH0_DOMAIN=dev-th2sys1lrhfma5gs.us.auth0.com
+APP_SECRET_KEY=zksdnadsnfioSFIOC
+
+```
+
 Run `sh exec.sh` to build and run the docker image in Linux or run `.\exec.ps1` to build
 and run the docker image on Windows.
 
