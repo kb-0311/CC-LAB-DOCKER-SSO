@@ -1,5 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #f5f8fa;
     margin: 0;
     padding: 0;
 }
@@ -8,16 +9,20 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
+    color: #1da1f2;
 }
 
 h2 {
-    margin-top: 30px;
+    margin-top: 20px;
+    font-size: 24px;
+    color: #333;
 }
 
 ul {
@@ -26,7 +31,11 @@ ul {
 }
 
 li {
-    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
 }
 
 form {
@@ -34,20 +43,99 @@ form {
 }
 
 textarea {
-    width: 100%;
+    width: calc(100% - 40px);
     margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #1da1f2;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
-    margin-left: 5px;
+    padding: 10px 20px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0d8eff;
+}
+
+a {
+    color: #1da1f2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1da1f2;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-brand h1 {
+    margin: 0;
+}
+
+.navbar-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+/* .navbar-nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+} */
+
+.navbar-nav li a:hover {
+    text-decoration: underline;
+}
+
+/* Side Panel */
+.side-panel {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    width: 250px;
+}
+
+.side-panel h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.quote {
+    margin-bottom: 20px;
+}
+
+.quote svg {
+    width: 20px;
+    height: 20px;
+    fill: #1da1f2;
+    margin-right: 10px;
+}
+
+.quote p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
 }

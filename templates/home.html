@@ -1,40 +1,55 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Notes</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    {% if session %}
-        {% if session.user %}
-            <h1>Welcome {{ session.user.get("name", "User") }}!</h1>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <h1>User Notes</h1>
+        </div>
+        <ul class="navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        {% if session %}
+            {% if session.user %}
+                <h1>Welcome {{ session.user.get("name", "User") }}!</h1>
+            {% else %}
+                <h1>Welcome Guest</h1>
+            {% endif %}
+            <h2>Your Notes</h2>
+            <ul>
+            {% for note in notes %}
+                <li>
+                    {{ note.note }}
+                    <form action="/delete-note/{{ note.id }}" method="post" style="display: inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <form action="/update-note/{{ note.id }}" method="post" style="display: inline;">
+                        <input type="text" name="note" placeholder="New note">
+                        <button type="submit">Update</button>
+                    </form>
+                </li>
+            {% endfor %}
+            </ul>
+            <form action="/add-note" method="post">
+                <textarea name="note" cols="30" rows="5"></textarea><br>
+                <button type="submit">Add Note</button>
+            </form>
+            <p><a href="/logout" id="qsLogoutBtn">Logout</a></p>
+            <div><pre>{{ pretty }}</pre></div>
         {% else %}
             <h1>Welcome Guest</h1>
+            <p><a href="/login" id="qsLoginBtn">Login</a></p>
         {% endif %}
-        <h2>Your Notes</h2>
-        <ul>
-          {% for note in notes %}
-              <li>
-                  {{ note.note }}
-                  <form action="/delete-note/{{ note.id }}" method="post" style="display: inline;">
-                      <button type="submit">Delete</button>
-                  </form>
-                  <form action="/update-note/{{ note.id }}" method="post" style="display: inline;">
-                      <input type="text" name="note" placeholder="New note">
-                      <button type="submit">Update</button>
-                  </form>
-              </li>
-          {% endfor %}
-        </ul>
-        <form action="/add-note" method="post">
-            <textarea name="note" cols="30" rows="5"></textarea><br>
-            <button type="submit">Add Note</button>
-        </form>
-        <p><a href="/logout" id="qsLogoutBtn">Logout</a></p>
-        <div><pre>{{ pretty }}</pre></div>
-    {% else %}
-        <h1>Welcome Guest</h1>
-        <p><a href="/login" id="qsLoginBtn">Login</a></p>
-    {% endif %}
+    </div>
 </body>
 </html>
